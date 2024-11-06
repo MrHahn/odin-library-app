@@ -15,6 +15,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayLibrary() {
+    libraryWrap.innerHTML = '';
     for (let book of myLibrary){
         let card =`
         <div class="library-card">
@@ -25,6 +26,6 @@ function displayLibrary() {
         </div>
 
         `;
-        libraryWrap.insertAdjacentHTML('afterend', card);
+        libraryWrap.insertAdjacentHTML('beforeend', card);
     }
 }
