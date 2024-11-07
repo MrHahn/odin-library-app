@@ -34,8 +34,23 @@ function displayLibrary() {
     }
 }
 
-function submitNewBook(){
-    
+function submitNewBook(e){
+    e.preventDefault();
+    const formData = new FormData(form);
+    const title = formData.get('title');
+    const author = formData.get('author');
+    const pages = formData.get('pages');
+    const read = (function(){
+        if(formData.get('have-read') === null){
+            return 'not read'
+        }else{
+            return 'read';
+        }
+    })();
+
+    addBookToLibrary(title, author, pages, read);
+    displayLibrary();
+    dialogBox.close();
 
 }
 
