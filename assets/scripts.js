@@ -51,6 +51,7 @@ function submitNewBook(e){
     addBookToLibrary(title, author, pages, read);
     displayLibrary();
     dialogBox.close();
+    form.reset();
 
 }
 
