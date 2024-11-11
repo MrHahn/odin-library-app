@@ -19,18 +19,25 @@ function addBookToLibrary(title, author, pages, read) {
      myLibrary.push(book);
 }
 
+
+//i think i need to rewrite the display library function and use javascript to create the elements instead of template literals
 function displayLibrary() {
     libraryWrap.innerHTML = '';
-    for (let book of myLibrary){
-        let card =`
-            <div class="library-card">
+    for (let [index, book] of myLibrary.entries()){
+        let card = document.createElement('div');
+        card.classList.add('library-card');
+        card.innerHTML =`
             <span class="title">${book.title}</span>
             <span class="author">${book.author}</span>
             <span class="pages">${book.pages}</span>
             <span cass="read">${book.read}</span>
-            </div>
         `;
-        libraryWrap.insertAdjacentHTML('beforeend', card);
+        
+        libraryWrap.appendChild(card);
+        let removeBtn = addRemoveBtn(index);
+        card.appendChild(removeBtn);
+
+
     }
 }
 
@@ -53,6 +60,22 @@ function submitNewBook(e){
     dialogBox.close();
     form.reset();
 
+}
+
+function removeBook(index){
+   let removedBooks = myLibrary.splice(index, 1);
+   console.log(removedBooks);
+   displayLibrary();
+}
+
+function addRemoveBtn(index){
+    let removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove Book';
+    removeBtn.setAttribute('data-index', index);
+    removeBtn.addEventListener('click', () => {
+        removeBook(index);
+    });
+    return removeBtn;
 }
 
 newBtn.addEventListener('click', () => { dialogBox.showModal()});
