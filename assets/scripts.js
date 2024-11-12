@@ -14,13 +14,31 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function(){
+    if(this.read === 'read'){
+        this.read = 'not read';
+    }else{
+        this.read = 'read';
+    }
+}
+
+function addReadButton(index){
+    let readBtn = document.createElement('button');
+    readBtn.classList.add('read-btn');
+    readBtn.textContent = myLibrary[index].read;
+    readBtn.setAttribute('data-index', index);
+    readBtn.addEventListener('click', () => {
+        myLibrary[index].toggleRead();
+        displayLibrary();
+    })
+    return readBtn;
+}
+
 function addBookToLibrary(title, author, pages, read) {
      let book = new Book(title, author, pages, read);
      myLibrary.push(book);
 }
 
-
-//i think i need to rewrite the display library function and use javascript to create the elements instead of template literals
 function displayLibrary() {
     libraryWrap.innerHTML = '';
     for (let [index, book] of myLibrary.entries()){
@@ -30,14 +48,12 @@ function displayLibrary() {
             <span class="title">${book.title}</span>
             <span class="author">${book.author}</span>
             <span class="pages">${book.pages}</span>
-            <span cass="read">${book.read}</span>
         `;
-        
         libraryWrap.appendChild(card);
         let removeBtn = addRemoveBtn(index);
         card.appendChild(removeBtn);
-
-
+        let readButton = addReadButton(index);
+        card.appendChild(readButton);
     }
 }
 
