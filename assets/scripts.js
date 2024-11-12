@@ -22,18 +22,6 @@ Book.prototype.toggleRead = function(){
     }
 }
 
-function addReadButton(index){
-    let readBtn = document.createElement('button');
-    readBtn.classList.add('read-btn');
-    readBtn.textContent = myLibrary[index].read;
-    readBtn.setAttribute('data-index', index);
-    readBtn.addEventListener('click', () => {
-        myLibrary[index].toggleRead();
-        displayLibrary();
-    })
-    return readBtn;
-}
-
 function addBookToLibrary(title, author, pages, read) {
      let book = new Book(title, author, pages, read);
      myLibrary.push(book);
@@ -52,7 +40,7 @@ function displayLibrary() {
         libraryWrap.appendChild(card);
         let removeBtn = addRemoveBtn(index);
         card.appendChild(removeBtn);
-        let readButton = addReadButton(index);
+        let readButton = addReadBtn(index);
         card.appendChild(readButton);
     }
 }
@@ -92,6 +80,18 @@ function addRemoveBtn(index){
         removeBook(index);
     });
     return removeBtn;
+}
+
+function addReadBtn(index){
+    let readBtn = document.createElement('button');
+    readBtn.classList.add('read-btn');
+    readBtn.textContent = myLibrary[index].read;
+    readBtn.setAttribute('data-index', index);
+    readBtn.addEventListener('click', () => {
+        myLibrary[index].toggleRead();
+        displayLibrary();
+    })
+    return readBtn;
 }
 
 newBtn.addEventListener('click', () => { dialogBox.showModal()});
