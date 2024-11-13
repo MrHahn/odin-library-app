@@ -53,8 +53,13 @@ body {
 .library-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 24%));
-    gap: 15px;
-    justify-content: center;
+    gap: 15px;  
+}
+
+@media screen and (max-width: 768px){
+    .library-wrapper{
+        justify-content: center;
+    }
 }
 
 .library-card {
@@ -66,7 +71,6 @@ body {
     border-radius: 7px;
     justify-items: baseline;
     align-items: center;
-    max-width: 350px;
     padding: 10px 15px;
     position: relative;
 }
