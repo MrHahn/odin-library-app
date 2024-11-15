@@ -46,13 +46,31 @@
     isolation: isolate;
   }
 
+:root{
+--wenge: #735a58ff;
+--almond: #f7e7d7ff;
+--space-cadet: #33384cff;
+--buff: #e1a986ff;
+    font-family: "Montserrat", sans-serif;
+}
+
 body {
     margin: 30px;
+    background:url('images/library-bg.jpg') top center / cover no-repeat;
+    height: 100vh;
 }
+
+h1 {
+    margin-bottom: 20px;
+    color: var(--buff);
+    font-weight: 400;
+}
+
+
 
 .library-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 24%));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 24%));
     gap: 15px;  
 }
 
@@ -67,19 +85,21 @@ body {
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     height: 150px;
-    border: 2px solid;
+    border: 2px solid var(--wenge);
     border-radius: 7px;
     justify-items: baseline;
     align-items: center;
     padding: 10px 15px;
     position: relative;
+    background:var(--almond);
+    box-shadow: 4px 4px 10px #000000a3;
 }
 
 span.title {
     grid-area: 1 / 1 / 2 / 2;
     text-transform: capitalize;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 19px;
+    font-weight: 400;
 }
 
 span.author {
@@ -96,6 +116,9 @@ span.pages {
 button.read-btn {
     grid-area: 3 / 2 / -1 / 3;
     justify-self: flex-end;
+    font-size: 11px;
+    padding: 5px;
+    text-transform: capitalize;
 }
 
 /* button.remove-book {
@@ -119,10 +142,20 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background:var(--almond);
+    border:none;
+    border-radius: 7px;
+    box-shadow: 4px 4px 10px #000000a3;
 }
 
 dialog::backdrop {
     background: #00000063;
+}
+
+dialog h3 {
+    font-weight: 300;
+    font-size: 21px;
+    margin-bottom: 15px;
 }
 
 .close {
@@ -141,12 +174,21 @@ dialog::backdrop {
     margin-bottom: 12px;
 }
 
+.form-row input {
+    border: 1px solid var(--wenge);
+}
+
 .form-row.checkbox {
     justify-content: flex-start;
 }
 
-button[type=submit] {
+button[type=submit],
+.read-btn {
     width: 100%;
+    color: white;
+    border: none;
+    background:var(--space-cadet);
+    padding: 10px 0;
 }
 
 input#have-read {
@@ -160,7 +202,11 @@ button.new-book {
     right: 25px;
     height: 50px;
     width: 50px;
-    border: none;
+    border: 2px solid var(--almond);
     border-radius: 25px;
     cursor: pointer;
+    background-color: var(--wenge);
+}
+.new-book svg {
+    filter: invert(88%) sepia(10%) saturate(709%) hue-rotate(327deg) brightness(108%) contrast(94%);
 }
