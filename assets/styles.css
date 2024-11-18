@@ -100,17 +100,20 @@ span.title {
     text-transform: capitalize;
     font-size: 19px;
     font-weight: 400;
+    color:var(--space-cadet)
 }
 
 span.author {
     grid-area: 2 / 1 / 3 / 2;
     font-size: 16px;
     text-transform: capitalize;
+    color:var(--space-cadet)
 }
 
 span.pages {
     grid-area: 3 / 1 / 3 / 2;
     text-transform: capitalize;
+    color:var(--space-cadet)
 }
 
 button.read-btn {
@@ -128,6 +131,7 @@ button.read-btn {
 button.remove-book svg {
     width: 25px;
     cursor: pointer;
+    filter: invert(18%) sepia(6%) saturate(2807%) hue-rotate(191deg) brightness(94%) contrast(85%);
 }
 button.remove-book {
     background: none;
@@ -189,6 +193,12 @@ button[type=submit],
     border: none;
     background:var(--space-cadet);
     padding: 10px 0;
+    border-radius: 5px;
+}
+
+.read-btn.read{
+    background:var(--buff);
+    color:var(--space-cadet);
 }
 
 input#have-read {
